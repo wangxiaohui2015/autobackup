@@ -4,8 +4,6 @@ echo=
 
 net stop Autobackup
 
-cd ../bin
-
-JavaService.exe -uninstall Autobackup
+%~dp0/JavaService.exe -uninstall Autobackup
 
 pause
