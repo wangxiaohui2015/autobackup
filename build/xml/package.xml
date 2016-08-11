@@ -23,9 +23,9 @@
 			<outputDirectory>logs</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>target/build/doc</directory>
+			<directory>.</directory>
 			<includes>
-				<include>README.txt</include>
+				<include>README.md</include>
 			</includes>
 			<outputDirectory></outputDirectory>
 		</fileSet>
