@@ -1,6 +1,6 @@
 #Welcome to AUTOBACKUP
 
-This tool can help you to backup anything on your computer, and the output files is encrypted by AES-128.
+This tool can help you to backup anything on your computer, and the output files are encrypted by AES-128.
 
 ####For develop
 mvn package
