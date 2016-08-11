@@ -28,7 +28,7 @@ public class FileEncryptor {
 
 	private static final String ALGORITHM = "AES";
 	private static final String ALGORITHM_PKCS5PADDING = "AES/CBC/PKCS5Padding";
-	private static final int CACHE_SIZE = 1024 * 1024 * 5;
+	private static final int CACHE_SIZE = 1024 * 1024;
 	private static final String CHARSET_UTF8 = "UTF-8";
 
 	/**
