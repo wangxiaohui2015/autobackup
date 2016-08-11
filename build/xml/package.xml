@@ -7,11 +7,11 @@
 	<includeBaseDirectory>true</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
-			<directory>build/scripts</directory>
+			<directory>target/build/scripts</directory>
 			<outputDirectory>bin</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>build/bin</directory>
+			<directory>target/build/bin</directory>
 			<outputDirectory>bin</outputDirectory>
 		</fileSet>
 		<fileSet>
@@ -19,11 +19,11 @@
 			<outputDirectory>conf</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>build/logs</directory>
+			<directory>target/build/logs</directory>
 			<outputDirectory>logs</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>build/doc</directory>
+			<directory>target/build/doc</directory>
 			<includes>
 				<include>README.txt</include>
 			</includes>
