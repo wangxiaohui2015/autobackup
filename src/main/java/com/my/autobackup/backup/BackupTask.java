@@ -66,7 +66,7 @@ public class BackupTask extends TimerTask {
 				continue;
 			}
 
-			logger.info("Try to process backup task, sourceDir: " + sourceDir
+			logger.info("Processing backup task, sourceDir: " + sourceDir
 					+ ", destDir: " + destDir);
 
 			if (!sourceFile.isDirectory() || !sourceFile.exists()) {
