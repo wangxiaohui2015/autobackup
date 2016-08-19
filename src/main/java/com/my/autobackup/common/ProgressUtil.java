@@ -8,50 +8,28 @@ import com.my.autobackup.restore.RestoreMain;
  * @author Administrator
  */
 public class ProgressUtil {
-	private long totalPoints = 0;
-	private int index = 1;
-	private long incressPoints = 0;
+    private long totalPoints = 0;
+    private long incressedPoints = 0;
 
-	/**
-	 * Constructor method.
-	 * 
-	 * @param totalPoints
-	 *            total points, in general, we need to pass the size of a file
-	 *            or a directory.
-	 */
-	public ProgressUtil(long totalPoints) {
-		super();
-		this.totalPoints = totalPoints;
-	}
+    /**
+     * Constructor method.
+     * 
+     * @param totalPoints total points, in general, we need to pass the size of a file or a
+     *        directory.
+     */
+    public ProgressUtil(long totalPoints) {
+        super();
+        this.totalPoints = totalPoints;
+    }
 
-	/**
-	 * Show current progress.
-	 * 
-	 * @param currentPoint
-	 *            current total point
-	 */
-	public void showProgress(long currentPoint) {
-		if (totalPoints == 0) {
-			return;
-		}
-		if (currentPoint * 1.0 / totalPoints >= (index / 10.0)) {
-			RestoreMain.prtln("Completed " + ((index * 10)) + "%.");
-			index += 1;
-		}
-	}
-
-	/**
-	 * Show current progress.
-	 * 
-	 * @param incressPoint
-	 *            Incress point
-	 */
-	public void showProgressByIncress(long incressPoint) {
-		incressPoints += incressPoint;
-		if (incressPoints * 1.0 / totalPoints >= (index / 10.0)) {
-			index = (int) ((incressPoints * 1.0 / totalPoints) * 10);
-			RestoreMain.prtln("Completed " + ((index * 10)) + "%.");
-			index += 1;
-		}
-	}
+    /**
+     * Show current progress.
+     * 
+     * @param incressedPoint Incress point
+     */
+    public void showProgressByIncress(long incressedPoint) {
+        incressedPoints += incressedPoint;
+        int percentage = (int) ((incressedPoints * 1.0 / totalPoints) * 100);
+        RestoreMain.prt("Completed " + percentage + "%. \r");
+    }
 }
