@@ -23,6 +23,10 @@
 			<outputDirectory>logs</outputDirectory>
 		</fileSet>
 		<fileSet>
+            <directory>target/build/jre${jre-version}</directory>
+            <outputDirectory>jre${jre-version}</outputDirectory>
+        </fileSet>
+		<fileSet>
 			<directory>.</directory>
 			<includes>
 				<include>README.md</include>
