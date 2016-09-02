@@ -14,9 +14,9 @@ import com.my.autobackup.common.FileUtil;
  * 
  * @author Administrator
  */
-public class BackupTask extends TimerTask {
+public class BackupHandler extends TimerTask {
 
-    private static Logger logger = Logger.getLogger(BackupTask.class);
+    private static Logger logger = Logger.getLogger(BackupHandler.class);
 
     @Override
     public void run() {

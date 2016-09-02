@@ -6,26 +6,44 @@
 	</formats>
 	<includeBaseDirectory>true</includeBaseDirectory>
 	<fileSets>
+		<!-- 
 		<fileSet>
 			<directory>target/build/scripts</directory>
-			<outputDirectory>bin</outputDirectory>
+			<outputDirectory>data/bin</outputDirectory>
+			<excludes>
+				<exclude>install.bat</exclude>
+				<exclude>install.bat</exclude>
+			</excludes>
+		</fileSet>
+		 -->
+		<fileSet>
+			<directory>target/build/scripts</directory>
+			<includes>
+				<include>install.bat</include>
+				<include>uninstall.bat</include>
+			</includes>
+			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
 			<directory>target/build/bin</directory>
-			<outputDirectory>bin</outputDirectory>
+			<outputDirectory>data/bin</outputDirectory>
 		</fileSet>
 		<fileSet>
 			<directory>src/main/resources/conf</directory>
-			<outputDirectory>conf</outputDirectory>
+			<outputDirectory>data/conf</outputDirectory>
 		</fileSet>
 		<fileSet>
 			<directory>target/build/logs</directory>
-			<outputDirectory>logs</outputDirectory>
+			<outputDirectory>data/logs</outputDirectory>
 		</fileSet>
 		<fileSet>
-            <directory>target/build/jre${jre-version}</directory>
-            <outputDirectory>jre${jre-version}</outputDirectory>
-        </fileSet>
+			<directory>target/build/jre${jre-version}</directory>
+			<outputDirectory>data/jre${jre-version}</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>target/build/db</directory>
+			<outputDirectory>data/db</outputDirectory>
+		</fileSet>
 		<fileSet>
 			<directory>.</directory>
 			<includes>
@@ -41,12 +59,12 @@
 			<excludes>
 				<exclude>${project.artifactId}-${project.version}.jar</exclude>
 			</excludes>
-			<outputDirectory>lib</outputDirectory>
+			<outputDirectory>data/lib</outputDirectory>
 		</fileSet>
 	</fileSets>
 	<dependencySets>
 		<dependencySet>
-			<outputDirectory>lib</outputDirectory>
+			<outputDirectory>data/lib</outputDirectory>
 			<scope>runtime</scope>
 			<excludes>
 				<exclude>${project.groupId}:${project.artifactId}</exclude>

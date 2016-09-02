@@ -27,7 +27,7 @@ public class ServiceMain {
 	public static void startService(String[] args) {
 		init(args);
 		logger.info("Service is starting...");
-		timer.schedule(new BackupTask(), ServiceConfigPropertiesUtil
+		timer.schedule(new BackupHandler(), ServiceConfigPropertiesUtil
 				.getInstance().getBackupStartupDelay(),
 				ServiceConfigPropertiesUtil.getInstance().getBackupInterval());
 	}
