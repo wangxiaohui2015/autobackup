@@ -81,9 +81,10 @@
 									dir="target/build/scripts">
 									<include name="restore.bat" />
 								</replace>
-								<replace token="%%JRE_VERSION%%" value="${jre-version}"
+								<replace token="${JRE_VERSION}" value="${jre-version}"
 									dir="target/build/scripts">
 									<include name="install_service.bat" />
+									<include name="install.bat" />
 									<include name="restore.bat" />
 								</replace>
 							</tasks>

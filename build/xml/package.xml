@@ -4,18 +4,8 @@
 	<formats>
 		<format>zip</format>
 	</formats>
-	<includeBaseDirectory>true</includeBaseDirectory>
+	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
-		<!-- 
-		<fileSet>
-			<directory>target/build/scripts</directory>
-			<outputDirectory>data/bin</outputDirectory>
-			<excludes>
-				<exclude>install.bat</exclude>
-				<exclude>install.bat</exclude>
-			</excludes>
-		</fileSet>
-		 -->
 		<fileSet>
 			<directory>target/build/scripts</directory>
 			<includes>
