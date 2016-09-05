@@ -15,7 +15,7 @@ public class FileEncryptionThread implements Runnable {
 
     private String sourceFile;
     private String destFile;
-    private BackupTaskController controller;
+    private BackupController controller;
 
     /**
      * Constructor method.
@@ -25,7 +25,7 @@ public class FileEncryptionThread implements Runnable {
      * @param controller BackupTaskController object
      */
     public FileEncryptionThread(String sourceFile, String destFile,
-                    BackupTaskController controller) {
+                    BackupController controller) {
         this.sourceFile = sourceFile;
         this.destFile = destFile;
         this.controller = controller;

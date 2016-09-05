@@ -25,7 +25,7 @@ public class DBHandler extends DBBase {
     }
 
     private void initDBConfig() {
-        dbPath = ServiceMain.getRootDir() + "\\db\\autobackup.db";
+        dbPath = ServiceMain.getRootDir() + "\\db\\autobackupdb";
         dbBusyTimeout = "120000"; // 2 minutes
         dbUrl = "jdbc:sqlite:" + dbPath;
     }

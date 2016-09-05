@@ -23,7 +23,7 @@ public class BackupHandler extends TimerTask {
         try {
             logger.info("Begin to execute backup task.");
             BackupConfigPropertiesUtil.getInstance().reloadProperties();
-            BackupTaskController controller = new BackupTaskController();
+            BackupController controller = new BackupController();
             executeBackupTask(controller);
 
             // Waiting for all tasks to finish.
@@ -34,7 +34,7 @@ public class BackupHandler extends TimerTask {
         }
     }
 
-    private void executeBackupTask(BackupTaskController controller) {
+    private void executeBackupTask(BackupController controller) {
         List<String> sourceKeys = BackupConfigPropertiesUtil.getInstance().getAllSourceKeys();
         for (String sourceKey : sourceKeys) {
             String destKey = BackupConfigPropertiesUtil.getInstance()
@@ -90,7 +90,7 @@ public class BackupHandler extends TimerTask {
     }
 
     private void processBackupTask(String sourceDir, String destDir,
-                    BackupTaskController controller) {
+                    BackupController controller) {
         File sourceFile = new File(sourceDir);
         File[] files = sourceFile.listFiles();
         for (File file : files) {

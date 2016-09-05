@@ -6,7 +6,8 @@ package com.my.autobackup.backup;
  * @author Administrator
  */
 public class BackupMain {
-	public static void main(String[] args) {
-		ServiceMain.startService(args);
-	}
+
+    public static void main(String[] args) {
+        ServiceMain.startService(args);
+    }
 }

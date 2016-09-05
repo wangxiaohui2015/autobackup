@@ -38,7 +38,7 @@ goto check_permissions
     echo Stopping service...
     for /F "tokens=3 delims=: " %%H in ('sc query "Autobackup" ^| findstr "        STATE"') do (
       if /I "%%H" EQU "RUNNING" (
-        net stop Autobackup
+        net stop Autobackup >nul 2>&1
         if not %errorLevel% == 0 (
             echo Failure: Failed to stop Autobackup service.
             goto end_unsuccessful

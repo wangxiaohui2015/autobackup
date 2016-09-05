@@ -15,6 +15,13 @@
 			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
+            <directory>target/build/scripts</directory>
+            <includes>
+                <include>uninstall.bat</include>
+            </includes>
+            <outputDirectory>data</outputDirectory>
+        </fileSet>
+		<fileSet>
 			<directory>target/build/bin</directory>
 			<outputDirectory>data/bin</outputDirectory>
 		</fileSet>

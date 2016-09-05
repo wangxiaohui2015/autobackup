@@ -56,7 +56,7 @@ goto check_permissions
 :initialize_database
     echo Initializing database...
     cd %INSTALL_PATH%\bin
-    sqlite3 ..\db\autobackup.db < ..\db\initdb.sql
+    sqlite3 ..\db\autobackupdb < ..\db\initdb.sql
     if not %errorLevel% == 0 (
         echo Failure: Failed to initialize database.
         goto end_unsuccessful
@@ -66,7 +66,7 @@ goto check_permissions
     )
     
 :install_service
-    echo Install service...
+    echo Installing service...
     :: Generate classpath
     @setlocal enabledelayedexpansion
     set jar_classpath=.
