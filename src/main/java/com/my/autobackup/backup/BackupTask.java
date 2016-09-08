@@ -14,16 +14,16 @@ import com.my.autobackup.common.FileUtil;
  * 
  * @author Administrator
  */
-public class BackupHandler extends TimerTask {
+public class BackupTask extends TimerTask {
 
-    private static Logger logger = Logger.getLogger(BackupHandler.class);
+    private static Logger logger = Logger.getLogger(BackupTask.class);
 
     @Override
     public void run() {
         try {
             logger.info("Begin to execute backup task.");
             BackupConfigPropertiesUtil.getInstance().reloadProperties();
-            BackupController controller = new BackupController();
+            BackupTaskController controller = new BackupTaskController();
             executeBackupTask(controller);
 
             // Waiting for all tasks to finish.
@@ -34,7 +34,7 @@ public class BackupHandler extends TimerTask {
         }
     }
 
-    private void executeBackupTask(BackupController controller) {
+    private void executeBackupTask(BackupTaskController controller) {
         List<String> sourceKeys = BackupConfigPropertiesUtil.getInstance().getAllSourceKeys();
         for (String sourceKey : sourceKeys) {
             String destKey = BackupConfigPropertiesUtil.getInstance()
@@ -90,7 +90,7 @@ public class BackupHandler extends TimerTask {
     }
 
     private void processBackupTask(String sourceDir, String destDir,
-                    BackupController controller) {
+                    BackupTaskController controller) {
         File sourceFile = new File(sourceDir);
         File[] files = sourceFile.listFiles();
         for (File file : files) {

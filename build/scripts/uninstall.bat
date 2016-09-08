@@ -30,7 +30,7 @@ goto check_permissions
     )
 
 :confirm_uninstall
-    set /P INPUT=Are you sure to uninstall Autobackup?(Y/N) 
+    set /P INPUT=Are you sure to uninstall Autobackup? (Y/N) 
     if /I "%INPUT%" EQU "Y" goto stop_service
     goto end_unsuccessful
 
@@ -81,4 +81,4 @@ goto check_permissions
 :end
     echo Press any key to exit.
 
-pause > nul
+pause >nul

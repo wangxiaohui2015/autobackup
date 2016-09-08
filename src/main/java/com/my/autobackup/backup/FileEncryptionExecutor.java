@@ -43,7 +43,7 @@ public class FileEncryptionExecutor {
 	 * @param controller
 	 *            backup task controller object.
 	 */
-	public void submitTask(Runnable task, BackupController controller) {
+	public void submitTask(Runnable task, BackupTaskController controller) {
 		if (!service.isShutdown()) {
 			controller.addTask();
 			service.submit(task);

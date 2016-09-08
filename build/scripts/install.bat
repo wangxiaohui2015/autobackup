@@ -17,7 +17,7 @@ goto check_permissions
 
 :check_permissions
     echo Checking permissions...
-    net session>nul 2>&1
+    net session >nul 2>&1
     if not %errorLevel% == 0 (
         echo Failure: Please run this command as administrator.
         goto end_unsuccessful
@@ -41,30 +41,9 @@ goto check_permissions
         echo Failure: Failed to copy files.
         goto end_unsuccessful
     ) else (
-        goto initialize_database
-    )
-
-:setup_environment_variables
-    setx /M PATH "%PATH%;%INSTALL_PATH%\bin"
-    if not %errorLevel% == 0 (
-        echo Failure: Failed to setup environment variables.
-        goto end_unsuccessful
-    ) else (
-        goto initialize_database
-    )
-
-:initialize_database
-    echo Initializing database...
-    cd %INSTALL_PATH%\bin
-    sqlite3 ..\db\autobackupdb < ..\db\initdb.sql
-    if not %errorLevel% == 0 (
-        echo Failure: Failed to initialize database.
-        goto end_unsuccessful
-    ) else (
-        del "%INSTALL_PATH%\db\initdb.sql"
         goto install_service
     )
-    
+
 :install_service
     echo Installing service...
     :: Generate classpath
@@ -96,4 +75,4 @@ goto check_permissions
 :end
     echo Press any key to exit.
 
-pause > nul
+pause >nul

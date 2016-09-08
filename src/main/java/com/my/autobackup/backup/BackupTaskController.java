@@ -10,9 +10,9 @@ import org.apache.log4j.Logger;
  * 
  * @author Administrator
  */
-public class BackupController {
+public class BackupTaskController {
 
-	private static Logger logger = Logger.getLogger(BackupController.class);
+	private static Logger logger = Logger.getLogger(BackupTaskController.class);
 
 	private int taskCount = 0;
 	private ReentrantLock lock = new ReentrantLock();
