@@ -31,8 +31,13 @@ goto check_permissions
         echo Failure: Autobackup has been installed already.
         goto end_unsuccessful
     ) else (
-        goto copy_components
+        goto confirm_install
     )
+
+:confirm_install
+    set /P INPUT=Autobackup will be installed under: "%INSTALL_PATH%", continue? (Y/N) 
+    if /I "%INPUT%" EQU "Y" goto copy_components
+    goto end_unsuccessful
 
 :copy_components
     echo Copying files...
@@ -70,9 +75,11 @@ goto check_permissions
 :end_successful
     echo.
     echo Install Autobackup successfully.
+    echo Please goto "%INSTALL_PATH%" to configure Autobackup and startup service.
     goto end
 
 :end
+    echo.
     echo Press any key to exit.
 
 pause >nul

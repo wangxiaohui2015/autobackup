@@ -45,6 +45,8 @@ goto check_permissions
         ) else (
             goto remove_service
         )
+      ) else (
+            goto remove_service
       )
     )
 
@@ -79,6 +81,7 @@ goto check_permissions
     goto end
 
 :end
+    echo.
     echo Press any key to exit.
 
 pause >nul

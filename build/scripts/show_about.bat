@@ -10,6 +10,7 @@ echo E-mail: wxhyzh2005@163.com
 echo.
 
 :end
+    echo.
     echo Press any key to exit.
 
 pause >nul

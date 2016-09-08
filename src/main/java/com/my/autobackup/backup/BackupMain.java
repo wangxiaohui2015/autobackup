@@ -1,7 +1,7 @@
 package com.my.autobackup.backup;
 
 /**
- * The main entry to entrypt file.
+ * The main entry to entrypt file. This class is used for development.
  * 
  * @author Administrator
  */

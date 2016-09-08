@@ -11,7 +11,17 @@ goto check_permissions
         echo Failure: Please run this command as administrator.
         goto end
     ) else (
+        goto check_service
+    )
+
+:check_service
+    for /F "tokens=3 delims=: " %%H in ('sc query "Autobackup" ^| findstr "        STATE"') do (
+      if /I "%%H" EQU "RUNNING" (
         goto shutdown_service
+      ) else (
+        echo Service is already shutdown.
+        goto end
+      )
     )
 
 :shutdown_service
@@ -26,6 +36,7 @@ goto check_permissions
     )
 
 :end
+    echo.
     echo Press any key to exit.
 
 pause >nul

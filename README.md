@@ -2,10 +2,10 @@
 
 This tool can help you to backup anything on your Windows computer, and the output files are encrypted by AES-128.
 
-####For develop
+####For development
 mvn package
 
-####For release
+####For installation
 1. Unzip file autobackup-VERSION.zip
 2. Click install.bat with Administrator permission to install Autobackup on your computer, the location is: C:\Program Files\autobackup
 3. Go to C:\Program Files\autobackup\

@@ -7,6 +7,10 @@ cd ..\
 set BASE_PATH="%cd%"
 cd bin
 cd %BASE_PATH%\jre${JRE_VERSION}\bin
-java -jar %BASE_PATH%\lib\autobackup-restore-${PROJECT_VERSION}-RELEASE.jar
+java -jar %BASE_PATH%\lib\autobackup-restore-${PROJECT_VERSION}.jar
 
-pause
+:end
+    echo.
+    echo Press any key to exit.
+
+pause >nul

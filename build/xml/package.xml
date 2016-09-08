@@ -52,6 +52,13 @@
 			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
+            <directory>.</directory>
+            <includes>
+                <include>README.md</include>
+            </includes>
+            <outputDirectory>data</outputDirectory>
+        </fileSet>
+		<fileSet>
 			<directory>target</directory>
 			<includes>
 				<include>*.jar</include>
