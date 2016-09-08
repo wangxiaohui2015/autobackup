@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.my</groupId>
 	<artifactId>autobackup</artifactId>
-	<version>1.2.0-RELEASE</version>
+	<version>1.1.0-RELEASE</version>
 	<properties>
 		<jre-version>1.8.0_65</jre-version>
 	</properties>
