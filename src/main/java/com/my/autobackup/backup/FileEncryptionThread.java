@@ -2,8 +2,6 @@ package com.my.autobackup.backup;
 
 import org.apache.log4j.Logger;
 
-import com.my.autobackup.backup.util.ServiceConfigPropertiesUtil;
-
 /**
  * File encryption thread object.
  * 
@@ -33,8 +31,7 @@ public class FileEncryptionThread implements Runnable {
 
     public void run() {
         try {
-            FileEncryptor.encryptFile(ServiceConfigPropertiesUtil.getInstance().getBackupKey(),
-                            sourceFile, destFile);
+            FileEncryptor.encryptFile(sourceFile, destFile);
             logger.info("Backup succeed, source: " + sourceFile + ", dest: " + destFile);
         } catch (Exception e) {
             logger.error("Backup failed, source: " + sourceFile + ", source: " + destFile, e);

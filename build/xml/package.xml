@@ -37,8 +37,8 @@
 			<outputDirectory>data/logs</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>target/build/jre${jre-version}</directory>
-			<outputDirectory>data/jre${jre-version}</outputDirectory>
+			<directory>target/build/jre${jre.version}</directory>
+			<outputDirectory>data/jre${jre.version}</outputDirectory>
 		</fileSet>
 		<fileSet>
 			<directory>target/build/db</directory>
@@ -52,7 +52,7 @@
 			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
-            <directory>.</directory>
+            <directory>target/build</directory>
             <includes>
                 <include>README.md</include>
             </includes>

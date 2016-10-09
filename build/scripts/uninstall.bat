@@ -4,7 +4,8 @@ echo.
 echo ============ Uninstall AUTOBACKUP ============ 
 echo.
 
-set INSTALL_PATH=C:\Program Files\autobackup
+set INSTALL_PATH=${INSTALLATION_PATH}
+set INSTALL_SERVICE_NAME=${INSTALLATION_SERVICE_NAME}
 
 timeout 1 >nul 2>&1
 
@@ -25,22 +26,22 @@ goto check_permissions
     if exist "%INSTALL_PATH%" (
         goto confirm_uninstall
     ) else (
-        echo Failure: Autobackup has not been installed yet.
+        echo Failure: %INSTALL_SERVICE_NAME% has not been installed yet.
         goto end_unsuccessful
     )
 
 :confirm_uninstall
-    set /P INPUT=Are you sure to uninstall Autobackup? (Y/N) 
+    set /P INPUT=Are you sure to uninstall %INSTALL_SERVICE_NAME%? (Y/N) 
     if /I "%INPUT%" EQU "Y" goto stop_service
     goto end_unsuccessful
 
 :stop_service
     echo Stopping service...
-    for /F "tokens=3 delims=: " %%H in ('sc query "Autobackup" ^| findstr "        STATE"') do (
+    for /F "tokens=3 delims=: " %%H in ('sc query "%INSTALL_SERVICE_NAME%" ^| findstr "        STATE"') do (
       if /I "%%H" EQU "RUNNING" (
-        net stop Autobackup >nul 2>&1
+        net stop %INSTALL_SERVICE_NAME% >nul 2>&1
         if not %errorLevel% == 0 (
-            echo Failure: Failed to stop Autobackup service.
+            echo Failure: Failed to stop %INSTALL_SERVICE_NAME% service.
             goto end_unsuccessful
         ) else (
             goto remove_service
@@ -52,9 +53,9 @@ goto check_permissions
 
 :remove_service
     echo Removing service...
-    sc delete Autobackup >nul 2>&1
+    sc delete %INSTALL_SERVICE_NAME% >nul 2>&1
     if not %errorLevel% == 0 (
-        echo Failure: Failed to remove Autobackup service.
+        echo Failure: Failed to remove %INSTALL_SERVICE_NAME% service.
         goto end_unsuccessful
     ) else (
         goto delete_files
@@ -72,12 +73,12 @@ goto check_permissions
 
 :end_unsuccessful
     echo.
-    echo Uninstall Autobackup not completed.
+    echo Uninstall %INSTALL_SERVICE_NAME% not completed.
     goto end
 
 :end_successful
     echo.
-    echo Uninstall Autobackup successfully.
+    echo Uninstall %INSTALL_SERVICE_NAME% successfully.
     goto end
 
 :end

@@ -2,6 +2,8 @@
 
 echo=
 
+set INSTALL_SERVICE_NAME=${INSTALLATION_SERVICE_NAME}
+
 goto check_permissions
 
 :check_permissions
@@ -15,7 +17,7 @@ goto check_permissions
     )
     
 :check_service
-    for /F "tokens=3 delims=: " %%H in ('sc query "Autobackup" ^| findstr "        STATE"') do (
+    for /F "tokens=3 delims=: " %%H in ('sc query "%INSTALL_SERVICE_NAME%" ^| findstr "        STATE"') do (
       if /I "%%H" EQU "RUNNING" (
         echo Service is already running.
         goto end
@@ -26,12 +28,12 @@ goto check_permissions
 
 :startup_service
     echo Starting service...
-    net start Autobackup >nul 2>&1
+    net start %INSTALL_SERVICE_NAME% >nul 2>&1
     if not %errorLevel% == 0 (
-        echo Failure: Failed to startup service Autobackup.
+        echo Failure: Failed to startup service %INSTALL_SERVICE_NAME%.
         goto end
     ) else (
-        echo Succeed to startup service Autobackup.
+        echo Succeed to startup service %INSTALL_SERVICE_NAME%.
         goto end
     )
 

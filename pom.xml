@@ -3,20 +3,25 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.my</groupId>
 	<artifactId>autobackup</artifactId>
-	<version>1.1.0-RELEASE</version>
+	<version>1.2.0-RELEASE</version>
 	<properties>
-		<jre-version>1.8.0_65</jre-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jre.version>1.8.0_65</jre.version>
+		<log4j.version>1.2.14</log4j.version>
+		<junit.version>4.12</junit.version>
+		<installation.path>C:\Program Files\Autobackup</installation.path>
+		<installation.service.name>Autobackup</installation.service.name>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -49,6 +54,10 @@
 								<resource>
 									<directory>build</directory>
 								</resource>
+								<resource>
+									<directory>.</directory>
+									<include>README.md</include>
+								</resource>
 							</resources>
 						</configuration>
 					</execution>
@@ -62,17 +71,25 @@
 						<configuration>
 							<tasks>
 								<replace token="${PROJECT_VERSION}" value="${project.version}"
-									dir="target/build/scripts">
-									<include name="*.bat" />
+									dir="target/build">
+									<include name="scripts/*.bat" />
 								</replace>
-								<replace token="${JRE_VERSION}" value="${jre-version}"
-									dir="target/build/scripts">
-									<include name="*.bat" />
+								<replace token="${JRE_VERSION}" value="${jre.version}"
+									dir="target/build">
+									<include name="scripts/*.bat" />
 								</replace>
 								<replace token="${BUILD_DATE}" value="${maven.build.timestamp}"
-                                    dir="target/build/scripts">
-                                    <include name="*.bat" />
-                                </replace>
+									dir="target/build">
+									<include name="scripts/*.bat" />
+								</replace>
+								<replace token="${INSTALLATION_PATH}" value="${installation.path}"
+									dir="target/build">
+									<include name="scripts/*.bat" />
+								</replace>
+								<replace token="${INSTALLATION_SERVICE_NAME}" value="${installation.service.name}"
+									dir="target/build">
+									<include name="scripts/*.bat" />
+								</replace>
 							</tasks>
 						</configuration>
 						<goals>

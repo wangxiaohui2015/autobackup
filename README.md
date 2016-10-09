@@ -10,8 +10,8 @@ Go to root location of this project, then execute: mvn package
 
 ####Installation
 1. Unzip file autobackup-VERSION.zip
-2. Click install.bat with Administrator permission to install Autobackup, the target location is: C:\Program Files\autobackup
-3. Go to C:\Program Files\autobackup\
+2. Click install.bat with Administrator permission to install Autobackup, the target location is: C:\Program Files\Autobackup
+3. Go to C:\Program Files\Autobackup
 3. Configure conf\backup\_config.properties and conf\service_config.properties
 4. Click bin\startup_service.bat with Administrator permission to startup service
 
@@ -25,3 +25,9 @@ Go to root location of this project, then execute: mvn package
 2. Refactor installation process
 3. Refactor restore command UI
 4. Optimize system configurations
+
+#####1.2.0
+1. Change installation path to from "C:\Program Files\autobackup" to "C:\Program Files\Autobackup"
+2. Refactor scripts, pom.xml, etc.
+3. Change task delay and interval unit to second
+4. Optimize system performance

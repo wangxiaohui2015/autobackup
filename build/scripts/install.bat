@@ -11,7 +11,8 @@ cd %~dp0 %root%
 set CURRENT_DIR_PATH=%cd%
 
 :: Installation path
-set INSTALL_PATH=C:\Program Files\autobackup
+set INSTALL_PATH=${INSTALLATION_PATH}
+set INSTALL_SERVICE_NAME=${INSTALLATION_SERVICE_NAME}
 
 goto check_permissions
 
@@ -28,14 +29,14 @@ goto check_permissions
 :check_installed
     echo Checking installed status...
     if exist "%INSTALL_PATH%" (
-        echo Failure: Autobackup has been installed already.
+        echo Failure: %INSTALL_SERVICE_NAME% has been installed already.
         goto end_unsuccessful
     ) else (
         goto confirm_install
     )
 
 :confirm_install
-    set /P INPUT=Autobackup will be installed under: "%INSTALL_PATH%", continue? (Y/N) 
+    set /P INPUT=%INSTALL_SERVICE_NAME% will be installed under: "%INSTALL_PATH%", continue? (Y/N) 
     if /I "%INPUT%" EQU "Y" goto copy_components
     goto end_unsuccessful
 
@@ -58,8 +59,8 @@ goto check_permissions
     @for %%c in ("%jar_dir%*.jar") do @set jar_classpath=!jar_classpath!;%%c
     :: Install service
     cd %INSTALL_PATH%\bin
-    set SERVICE_DESC=This is the Autobakup service, you can backup anything on your computer.
-    JavaService.exe -install "Autobackup" "%INSTALL_PATH%\jre${JRE_VERSION}\bin\server\jvm.dll" -Xmx512m -Djava.class.path="%jar_classpath%" -DrootDir="%INSTALL_PATH%" -start com.my.autobackup.backup.ServiceMain -method startService -stop com.my.autobackup.backup.ServiceMain -method stopService -out "%INSTALL_PATH%\logs\service_out.log" -err "%INSTALL_PATH%\logs\service_err.log" -current "%CD%" -auto -description "%SERVICE_DESC%" >nul 2>&1
+    set SERVICE_DESC=This is the %INSTALL_SERVICE_NAME% service, you can backup anything on your computer.
+    JavaService.exe -install "%INSTALL_SERVICE_NAME%" "%INSTALL_PATH%\jre${JRE_VERSION}\bin\server\jvm.dll" -Xmx512m -Djava.class.path="%jar_classpath%" -DrootDir="%INSTALL_PATH%" -start com.my.autobackup.backup.ServiceMain -method startService -stop com.my.autobackup.backup.ServiceMain -method stopService -out "%INSTALL_PATH%\logs\service_out.log" -err "%INSTALL_PATH%\logs\service_err.log" -current "%CD%" -auto -description "%SERVICE_DESC%" >nul 2>&1
     if not %errorLevel% == 0 (
         echo Failure: Failed to install service.
         goto end_unsuccessful
@@ -69,13 +70,13 @@ goto check_permissions
 
 :end_unsuccessful
     echo.
-    echo Install Autobackup not completed.
+    echo Install %INSTALL_SERVICE_NAME% not completed.
     goto end
 
 :end_successful
     echo.
-    echo Install Autobackup successfully.
-    echo Please goto "%INSTALL_PATH%" to configure Autobackup and startup service.
+    echo Install %INSTALL_SERVICE_NAME% successfully.
+    echo Please goto "%INSTALL_PATH%" to configure %INSTALL_SERVICE_NAME% and startup service.
     goto end
 
 :end
